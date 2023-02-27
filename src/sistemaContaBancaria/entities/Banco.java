@@ -3,20 +3,20 @@ package sistemaContaBancaria.entities;
 public class Banco {
 	
 	private Usuario usuario;
-	private Long numeroConta;
-	private Double saldo; 
+	
+	private Integer numeroConta;
+	private Double balance; 
 	private Double limiteSaque;
 	
-	public Banco() {
-		
+	public Banco() {	
 	}
 
-	public Banco(Usuario usuario, Long numeroConta, Double saldo, Double limiteSaque) {
+	public Banco(Usuario usuario, Integer numeroConta, Double balance, Double limiteSaque) {
 		super();
 		this.usuario = usuario;
 		this.numeroConta = numeroConta;
-		this.saldo = saldo;
-		this.limiteSaque = limiteSaque;
+		this.balance = balance;
+		this.limiteSaque = balance + 2000.00;
 	}
 
 	public Usuario getUsuario() {
@@ -27,16 +27,16 @@ public class Banco {
 		this.usuario = usuario;
 	}
 
-	public Long getNumeroConta() {
+	public Integer getNumeroConta() {
 		return numeroConta;
 	}
 
-	public void setNumeroConta(Long numeroConta) {
+	public void setNumeroConta(Integer numeroConta) {
 		this.numeroConta = numeroConta;
 	}
 
 	public Double getSaldo() {
-		return saldo;
+		return balance;
 	}
 
 	public Double getLimiteSaque() {
@@ -44,6 +44,22 @@ public class Banco {
 	}
 
 
+	public void depositAmount(Double amount) {
+		this.balance += amount;
+	}
+	public void withdrawAmount(Double amount) {
+				this.balance -= amount;
+	}
+
+	@Override
+	public String toString() {
+		return "Titular: " + this.usuario.getName() + "\n" +
+				"Número conta: " + this.numeroConta + "\n" + 
+				"Saldo: " + this.balance;
+				
+				
+	}
+	
 	
 	
 }
